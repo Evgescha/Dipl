@@ -49,6 +49,7 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.dgvClients = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button10 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -64,7 +65,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dgvAutos = new System.Windows.Forms.DataGridView();
-            this.button10 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -114,7 +114,7 @@
             this.groupBox2.Controls.Add(this.radioButton4);
             this.groupBox2.Controls.Add(this.radioButton5);
             this.groupBox2.Controls.Add(this.radioButton6);
-            this.groupBox2.Location = new System.Drawing.Point(12, 95);
+            this.groupBox2.Location = new System.Drawing.Point(12, 96);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(595, 38);
             this.groupBox2.TabIndex = 30;
@@ -315,6 +315,16 @@
             this.tabPage2.Text = "Авто";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // button10
+            // 
+            this.button10.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.Location = new System.Drawing.Point(666, 75);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(105, 30);
+            this.button10.TabIndex = 16;
+            this.button10.Text = "Цены";
+            this.button10.UseVisualStyleBackColor = true;
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.radioButton1);
@@ -472,16 +482,6 @@
             this.dgvAutos.RowTemplate.Height = 24;
             this.dgvAutos.Size = new System.Drawing.Size(764, 259);
             this.dgvAutos.TabIndex = 0;
-            // 
-            // button10
-            // 
-            this.button10.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(666, 75);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(105, 30);
-            this.button10.TabIndex = 16;
-            this.button10.Text = "Цены";
-            this.button10.UseVisualStyleBackColor = true;
             // 
             // EmplPlace
             // 
