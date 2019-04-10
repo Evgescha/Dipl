@@ -45,6 +45,7 @@ namespace Dipl
             textBox4.Text = "";
             textBox5.Text = "";
             textBox6.Text = "";
+            radioButton4.Checked = true;
         }
     }
 }
