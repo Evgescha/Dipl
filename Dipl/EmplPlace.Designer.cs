@@ -30,6 +30,12 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -58,19 +64,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dgvAutos = new System.Windows.Forms.DataGridView();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.button10 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAutos)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -107,6 +108,72 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Клиенты";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.radioButton4);
+            this.groupBox2.Controls.Add(this.radioButton5);
+            this.groupBox2.Controls.Add(this.radioButton6);
+            this.groupBox2.Location = new System.Drawing.Point(12, 95);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(595, 38);
+            this.groupBox2.TabIndex = 30;
+            this.groupBox2.TabStop = false;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Checked = true;
+            this.radioButton4.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioButton4.Location = new System.Drawing.Point(10, 5);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(130, 28);
+            this.radioButton4.TabIndex = 14;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "Показать все";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioButton5.Location = new System.Drawing.Point(167, 5);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(201, 28);
+            this.radioButton5.TabIndex = 15;
+            this.radioButton5.Text = "Показать арендующих";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            // 
+            // radioButton6
+            // 
+            this.radioButton6.AutoSize = true;
+            this.radioButton6.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioButton6.Location = new System.Drawing.Point(387, 5);
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.Size = new System.Drawing.Size(185, 28);
+            this.radioButton6.TabIndex = 16;
+            this.radioButton6.Text = "Показать свободных";
+            this.radioButton6.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            this.button9.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.Location = new System.Drawing.Point(651, 68);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(105, 30);
+            this.button9.TabIndex = 29;
+            this.button9.Text = "Оплатить";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(651, 32);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(105, 30);
+            this.button8.TabIndex = 28;
+            this.button8.Text = "Оформить";
+            this.button8.UseVisualStyleBackColor = true;
             // 
             // button7
             // 
@@ -227,6 +294,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button10);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Controls.Add(this.listBox1);
@@ -296,7 +364,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(666, 72);
+            this.button2.Location = new System.Drawing.Point(667, 3);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(105, 30);
             this.button2.TabIndex = 14;
@@ -405,71 +473,15 @@
             this.dgvAutos.Size = new System.Drawing.Size(764, 259);
             this.dgvAutos.TabIndex = 0;
             // 
-            // button8
+            // button10
             // 
-            this.button8.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(651, 32);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(105, 30);
-            this.button8.TabIndex = 28;
-            this.button8.Text = "Оформить";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            this.button9.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(651, 68);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(105, 30);
-            this.button9.TabIndex = 29;
-            this.button9.Text = "Оплатить";
-            this.button9.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.radioButton4);
-            this.groupBox2.Controls.Add(this.radioButton5);
-            this.groupBox2.Controls.Add(this.radioButton6);
-            this.groupBox2.Location = new System.Drawing.Point(12, 95);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(595, 38);
-            this.groupBox2.TabIndex = 30;
-            this.groupBox2.TabStop = false;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Checked = true;
-            this.radioButton4.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton4.Location = new System.Drawing.Point(10, 5);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(130, 28);
-            this.radioButton4.TabIndex = 14;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Показать все";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton5.Location = new System.Drawing.Point(167, 5);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(201, 28);
-            this.radioButton5.TabIndex = 15;
-            this.radioButton5.Text = "Показать арендующих";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
-            // radioButton6
-            // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton6.Location = new System.Drawing.Point(387, 5);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(185, 28);
-            this.radioButton6.TabIndex = 16;
-            this.radioButton6.Text = "Показать свободных";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.button10.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.Location = new System.Drawing.Point(666, 75);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(105, 30);
+            this.button10.TabIndex = 16;
+            this.button10.Text = "Цены";
+            this.button10.UseVisualStyleBackColor = true;
             // 
             // EmplPlace
             // 
@@ -482,14 +494,14 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAutos)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -531,5 +543,6 @@
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.Button button10;
     }
 }
