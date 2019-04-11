@@ -64,6 +64,7 @@
     <Compile Include="Contracts.Designer.cs">
       <DependentUpon>Contracts.cs</DependentUpon>
     </Compile>
+    <Compile Include="DBase.cs" />
     <Compile Include="EngineerPlace.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EngineerPlace.resx">
       <DependentUpon>EngineerPlace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogIn.resx">
+      <DependentUpon>LogIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

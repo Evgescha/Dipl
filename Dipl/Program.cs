@@ -16,7 +16,7 @@ namespace Dipl
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new EngineerPlace());
+            Application.Run(new LogIn());
         }
     }
 }
