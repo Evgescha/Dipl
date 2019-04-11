@@ -12,6 +12,8 @@ namespace Dipl
 {
     public partial class EmplPlace : Form
     {
+        private Clients clients;
+
         public EmplPlace()
         {
             InitializeComponent();
@@ -42,7 +44,8 @@ namespace Dipl
             textBox6.Text = "";
             radioButton4.Checked = true;
 
-            DBase.DB.selectToGrid("SELECT surname as [Фамилия], firstname as [Имя], lastname as [Отчество], passport as [Пасспорт], phone as [Телефон] FROM clients", dgvClients);
+            DBase.DB.selectToGrid("SELECT id, surname as [Фамилия], firstname as [Имя], lastname as [Отчество], passport as [Пасспорт], phone as [Телефон] FROM clients", dgvClients);
+            dgvClients.Columns[0].Visible = false;
         }
         private void resetAuto() {
             textBox1.Text = "";
@@ -50,17 +53,9 @@ namespace Dipl
             textBox3.Text = "";
             listBox1.SetSelected(0, true);
             radioButton1.Checked = true;
-
-            DBase.DB.selectToGrid("SELECT * FROM cars", dgvAutos);
+            string command = "SELECT id as [ИД], brand as [Марка],model as [Модель],years as [Выпуск],transmission as [Коробка],color as [Цвет],horsepower as [ЛС],engine_size as [Двигатель],rental as [Арендован], id_price as [Цена] FROM cars";
+            DBase.DB.selectToGrid(command, dgvAutos);
             dgvAutos.Columns[0].Visible = false;
-            dgvAutos.Columns[1].HeaderText = "Марка";
-            dgvAutos.Columns[2].HeaderText = "Модель";
-            dgvAutos.Columns[3].HeaderText = "Выпуск";
-            dgvAutos.Columns[4].HeaderText = "Коробка";
-            dgvAutos.Columns[5].HeaderText = "Цвет";
-            dgvAutos.Columns[6].HeaderText = "Л.С.";
-            dgvAutos.Columns[7].HeaderText = "Двигатель";
-            dgvAutos.Columns[8].HeaderText = "Арендован";
             dgvAutos.Columns[9].Visible = false;
         }
         private void reset() {
@@ -82,12 +77,16 @@ namespace Dipl
         // добавить клиента
         private void button5_Click(object sender, EventArgs e)
         {
-
+            clients = new Clients();
+            clients.Show();
         }
         //изменить клиента
         private void button6_Click(object sender, EventArgs e)
         {
-
+            int rowIndex = dgvClients.CurrentCell.RowIndex;
+            int id = int.Parse(dgvClients[0, rowIndex].Value.ToString());
+            clients = new Clients(id);
+            clients.Show();
         }
         // удалить клиента
         private void button7_Click(object sender, EventArgs e)
@@ -103,6 +102,21 @@ namespace Dipl
         private void button9_Click(object sender, EventArgs e)
         {
 
+        }
+        // кнопка поиска авто
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string command = "SELECT id as [ИД], brand as [Марка],model as [Модель],years as [Выпуск],transmission as [Коробка],color as [Цвет],horsepower as [ЛС],engine_size as [Двигатель],rental as [Арендован], id_price as [Цена] FROM cars WHERE id>0 ";
+           
+            string temp = "";
+            if (textBox4.Text.Length<1) temp += $" AND brand LIKE(\"%{textBox1.Text}%\") ";
+            if (textBox5.Text.Length < 1) temp += $" AND model LIKE(\"%{textBox2.Text}%\") ";
+            if (textBox6.Text.Length < 1) temp += $" AND years LIKE(\"%{textBox3.Text}%\") ";
+            if (listBox1.SelectedItem.ToString() != "Любая") temp += $" AND transmission LIKE(\"%{listBox1.SelectedItem.ToString()}%\") ";
+            Console.WriteLine(command + temp);
+            DBase.DB.selectToGrid(command + temp, dgvAutos);
+            dgvAutos.Columns[0].Visible = false;
+            dgvAutos.Columns[9].Visible = false;
         }
     }
 }
