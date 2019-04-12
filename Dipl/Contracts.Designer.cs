@@ -63,6 +63,7 @@
             this.button5.TabIndex = 31;
             this.button5.Text = "Сохранить";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label7
             // 
@@ -296,6 +297,7 @@
             this.textBox11.ReadOnly = true;
             this.textBox11.Size = new System.Drawing.Size(149, 25);
             this.textBox11.TabIndex = 50;
+            this.textBox11.Text = "0";
             // 
             // Contracts
             // 

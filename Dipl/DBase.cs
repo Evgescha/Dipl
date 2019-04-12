@@ -32,14 +32,11 @@ namespace Dipl
                 
                 OleDbDataReader reader = command.ExecuteReader();
                 int count = 0;
-                string[] responce = new string[4];
-                while (reader.Read())
+                reader.Read(); count++;
+                string[] responce = new string[reader.FieldCount];
+                for (int i = 0; i < reader.FieldCount; i++)
                 {
-                    count++;
-                    responce[0] = reader[1].ToString();
-                    responce[1] = reader[2].ToString();
-                    responce[2] = reader[3].ToString();
-                    responce[3] = reader[4].ToString();
+                    responce[i] = reader[i].ToString();
                 }
                 if (count == 1) { MessageBox.Show("Вход выполнен успешно"); connection.Close(); return responce; }
                 else { MessageBox.Show("Неверные данные. Повторите еще раз"); connection.Close(); return null; }

@@ -112,7 +112,9 @@ namespace Dipl
 
                 contracts = new Contracts(idCl, idAu);
                 contracts.Show();
-            } catch (Exception ex) { MessageBox.Show("Не выбран пользователь или авто."); }
+            } catch (Exception ex) { MessageBox.Show("Не выбран пользователь или авто.");
+                //MessageBox.Show(ex.ToString());
+            }
         }
         // оплатить клиента
         private void button9_Click(object sender, EventArgs e)

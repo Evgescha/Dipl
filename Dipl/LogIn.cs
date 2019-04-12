@@ -28,7 +28,7 @@ namespace Dipl
                 FIO=DBase.DB.LogIn(textBox1.Text.Trim(), textBox2.Text.Trim());
                 if (FIO != null)
                 {
-                    switch (FIO[3])
+                    switch (FIO[4])
                     {
                         case "Employee":
                             emplPlace = new EmplPlace();
