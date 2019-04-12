@@ -38,6 +38,7 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -116,7 +117,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(502, 36);
+            this.groupBox1.Size = new System.Drawing.Size(392, 36);
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
             // 
@@ -133,6 +134,7 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Все";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_Click);
             this.radioButton1.Click += new System.EventHandler(this.radioButton1_Click);
             // 
             // radioButton2
@@ -146,6 +148,7 @@
             this.radioButton2.TabIndex = 12;
             this.radioButton2.Text = "Оплаченные";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton1_Click);
             this.radioButton2.Click += new System.EventHandler(this.radioButton1_Click);
             // 
             // radioButton3
@@ -159,13 +162,27 @@
             this.radioButton3.TabIndex = 13;
             this.radioButton3.Text = "Ожидающие оплату";
             this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton1_Click);
             this.radioButton3.Click += new System.EventHandler(this.radioButton1_Click);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(407, 82);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(109, 28);
+            this.button1.TabIndex = 41;
+            this.button1.Text = "Обновить";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ContractsClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(527, 292);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.dataGridView1);
@@ -196,5 +213,6 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.Button button1;
     }
 }

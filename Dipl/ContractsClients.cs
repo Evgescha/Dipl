@@ -26,7 +26,7 @@ namespace Dipl
                 "All_price as [Общая сумма], " +
                 "advanse as [Аванс], " +
                 "paid as [Внесено] "+
-                " FROM contracts WHERE Client_id=" + idCl + "  ";
+                " FROM contracts WHERE Client_id=" + idCl + " ";
             InitializeComponent();
         }
         public void resenInAnotherForm() {
@@ -46,16 +46,9 @@ namespace Dipl
       
         public void resetGrid() {
             string temp = "";
-            for (int i = 0; i < 3; i++)
-            {
-                RadioButton rb = ((RadioButton)groupBox1.Controls[i]);
-                if (rb.Checked == true)
-                    switch (i)
-                    {
-                        case 2: temp = "AND paid<All_price "; break;
-                        case 1: temp = "AND All_price=paid"; break;
-                    }
-            }
+            if (radioButton3.Checked) temp = "AND paid<All_price ";
+            if (radioButton2.Checked) temp = "AND All_price=paid";
+            //MessageBox.Show(command + temp);
             DBase.DB.selectToGrid(command + temp, dataGridView1);
         }
 
@@ -63,7 +56,7 @@ namespace Dipl
         {
             resetGrid();
         }
-
+        //кнопка оплатить
         private void button5_Click(object sender, EventArgs e)
         {
             try
@@ -74,6 +67,11 @@ namespace Dipl
                 contracts.Show();
             }
             catch (Exception ex) { MessageBox.Show("Не выбран контракт"); }
+        }
+        //кнопка обновить
+        private void button1_Click(object sender, EventArgs e)
+        {
+            resetGrid();
         }
     }
 }
