@@ -5,7 +5,7 @@ namespace Dipl
 {
     public partial class LogIn : Form
     {
-        string[] FIO = new string[4];
+        public string[] FIO = new string[4];
         EmplPlace emplPlace;
         EngineerPlace engineerPlace;
         public static LogIn logIn;
