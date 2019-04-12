@@ -22,7 +22,7 @@ namespace Dipl
         }
 
         private void initInfo() {
-            client = DBase.DB.SelectOneClient(id.ToString());
+            client = DBase.DB.SelectOne("clients",id.ToString());
             textBox1.Text = client[2];
             textBox2.Text = client[3];
             textBox3.Text = client[4];

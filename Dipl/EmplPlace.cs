@@ -13,6 +13,7 @@ namespace Dipl
     public partial class EmplPlace : Form
     {
         private Clients clients;
+        private Contracts contracts;
 
         public EmplPlace()
         {
@@ -87,16 +88,31 @@ namespace Dipl
             int id = int.Parse(dgvClients[0, rowIndex].Value.ToString());
             clients = new Clients(id);
             clients.Show();
+
         }
         // удалить клиента
         private void button7_Click(object sender, EventArgs e)
         {
-
+            int rowIndex = dgvClients.CurrentCell.RowIndex;
+            int id = int.Parse(dgvClients[0, rowIndex].Value.ToString());
+            string command = $"DELETE FROM clients WHERE id={id}";
+            DBase.DB.Update(command, true);
+            resetClient();
         }
         //оформить клиента
         private void button8_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int rowIndexCl = dgvClients.CurrentCell.RowIndex;
+                int idCl = int.Parse(dgvClients[0, rowIndexCl].Value.ToString());
 
+                int rowIndexAu = dgvAutos.CurrentCell.RowIndex;
+                int idAu = int.Parse(dgvAutos[0, rowIndexAu].Value.ToString());
+
+                contracts = new Contracts(idCl, idAu);
+                contracts.Show();
+            } catch (Exception ex) { MessageBox.Show("Не выбран пользователь или авто."); }
         }
         // оплатить клиента
         private void button9_Click(object sender, EventArgs e)

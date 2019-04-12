@@ -53,31 +53,24 @@ namespace Dipl
             }
             
         }
-
-        public string[] SelectOneClient(string id) {
+        
+        public string[] SelectOne(string tablName, string id) {
             try
             {
                 connection.Open();
                 OleDbCommand command = new OleDbCommand();
                 command.Connection = connection;
-                command.CommandText = $"SELECT * FROM clients c WHERE c.id={id}";
+                command.CommandText = $"SELECT * FROM {tablName} WHERE id={id}";
 
                 OleDbDataReader reader = command.ExecuteReader();
                 int count = 0;
-                string[] responce = new string[8];
-                while (reader.Read())
+                reader.Read(); count++; 
+                string[] responce = new string[reader.FieldCount];
+                for(int i=0; i<reader.FieldCount; i++)
                 {
-                    count++;
-                    responce[0] = reader[0].ToString();
-                    responce[1] = reader[1].ToString();
-                    responce[2] = reader[2].ToString();
-                    responce[3] = reader[3].ToString();
-                    responce[4] = reader[4].ToString();
-                    responce[5] = reader[5].ToString();
-                    responce[6] = reader[6].ToString();
-                    responce[7] = reader[7].ToString();
-                    
-                }
+                    responce[i] = reader[i].ToString();
+                } 
+                
                 if (count == 1) {connection.Close(); return responce; }
                 else {connection.Close(); return null; }
 
