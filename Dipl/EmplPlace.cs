@@ -14,6 +14,7 @@ namespace Dipl
     {
         private Clients clients;
         private Contracts contracts;
+        private ContractsClients contractsClients;
 
         public EmplPlace()
         {
@@ -116,10 +117,13 @@ namespace Dipl
                 //MessageBox.Show(ex.ToString());
             }
         }
-        // оплатить клиента
+        // контракты клиента
         private void button9_Click(object sender, EventArgs e)
         {
-
+            int rowIndexCl = dgvClients.CurrentCell.RowIndex;
+            int idCl = int.Parse(dgvClients[0, rowIndexCl].Value.ToString());
+            contractsClients = new ContractsClients(idCl);
+            contractsClients.Show();
         }
         // кнопка поиска авто
         private void button1_Click(object sender, EventArgs e)

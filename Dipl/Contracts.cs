@@ -19,23 +19,34 @@ namespace Dipl
         float[] price;
         string command;
         float all, curr, avans, have;
+        string[] contracts;
         public Contracts(int idCl, int idAut)
         {
             this.idAut = idAut;
             this.idCl = idCl;
             InitializeComponent();
             
-            loadClientInfo();
-            loadAutoInfo();
+           // loadClientInfo();
+           // loadAutoInfo();
         }
-        public Contracts(int idCOntr)
+        public Contracts(int idContr)
         {
-            InitializeComponent();
             this.idContr = idContr;
+            InitializeComponent();
+            contracts = DBase.DB.SelectOne("contracts", idContr + "");
+            idCl = int.Parse(contracts[2]);
+            idAut = int.Parse(contracts[3]);
+            textBox7.Text = contracts[4];
+            textBox7.Enabled = false;
+            textBox8.Text = contracts[5];
+            textBox9.Text = contracts[6];
+            textBox11.Text = contracts[7];
         }
 
         private void Contracts_Load(object sender, EventArgs e)
         {
+            loadClientInfo();
+            loadAutoInfo();
 
         }
         private void loadClientInfo()
@@ -80,7 +91,10 @@ namespace Dipl
                 textBox8.Text = allPrice + "";
                 textBox9.Text = avanse + "";
             }
-            catch (Exception ex) { }
+            catch (Exception ex) {
+                textBox8.Text = "0";
+                textBox9.Text = "0";
+            }
         }
 
         private void onlyNumberPress(object sender, KeyPressEventArgs e)
@@ -128,12 +142,21 @@ namespace Dipl
             }
 
             command = $"INSERT INTO contracts(Employees_id,Client_id, Car_id,days, All_price, advanse, paid) VALUES({idEmpl},{idCl},{idAut},\"{textBox7.Text}\", {all}, {avans}, {curr})";
-            MessageBox.Show(command);
-            DBase.DB.Update(command, true);
+            //MessageBox.Show(command);
+            if (DBase.DB.Update(command, true)) { ContractsClients.CC.resenInAnotherForm(); Close(); }
 
         }
         private void oldContract()
         {
+            if ((curr+have)>all)
+            {
+                MessageBox.Show("Слишком большая сумма. Максимальная для контракта - "+(all-have));
+                return;
+            }
+
+            command = $"UPDATE contracts SET paid=paid+{curr}";
+            // MessageBox.Show(command);
+            if (DBase.DB.Update(command, true)) { ContractsClients.CC.resenInAnotherForm(); Close(); }
 
         }
         private bool validate() {

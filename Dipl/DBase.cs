@@ -80,7 +80,7 @@ namespace Dipl
             }
         }
         //обновить/удалить/добавить значение
-        public void Update(string command, bool onMessage)
+        public bool Update(string command, bool onMessage)
         {
             try
             {
@@ -93,15 +93,17 @@ namespace Dipl
                 
                 if (onMessage) MessageBox.Show("успешно!");
                 connection.Close();
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("FAIL" + ex);
                 connection.Close();
+                return false;
             }
         }
         //получить ячейку значения
-        public string getColumn(string command, string column)
+        public string[] getColumn(string command, string[] column)
         {
             try
             {
@@ -111,12 +113,13 @@ namespace Dipl
                 mes.Connection = connection;
                 mes.CommandText = command;
                 OleDbDataReader reader = mes.ExecuteReader();
-                string massageString = "";
-                while (reader.Read())
+                reader.Read();
+                string[] massageString = new string[column.Length];
+                for(int i=0; i<reader.FieldCount; i++)
                 {
-                    massageString = reader[column].ToString();
+                    massageString[i] = reader[column[i]].ToString();
                 }
-                MessageBox.Show(massageString);
+               
                 connection.Close();
                 return massageString;
             }
@@ -124,7 +127,7 @@ namespace Dipl
             {
                 MessageBox.Show("FAIL" + ex);
                 connection.Close();
-                return "";
+                return null;
             }
         }
         //вывести данные в грид
