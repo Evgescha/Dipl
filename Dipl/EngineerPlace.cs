@@ -62,13 +62,15 @@ namespace Dipl
             car.Show();
         }
         void delete() {
-            DialogResult dialogResult = MessageBox.Show("Удаление", "Действительно удалить?", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Действительно удалить?", "Удаление", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 try
                 {
                     int idAu = int.Parse(dgvAutos[0, dgvAutos.CurrentCell.RowIndex].Value.ToString());
                     command = "DELETE FROM cars WHERE id =" + idAu;
+                    DBase.DB.Update(command, true);
+                    command = "DELETE FROM prices WHERE id =" + idAu;
                     DBase.DB.Update(command, true);
                 }
                 catch (Exception e) { MessageBox.Show("Ошибка удаления"); }

@@ -88,11 +88,20 @@ namespace Dipl
         // удалить клиента
         private void button7_Click(object sender, EventArgs e)
         {
-            int rowIndex = dgvClients.CurrentCell.RowIndex;
-            int id = int.Parse(dgvClients[0, rowIndex].Value.ToString());
-            string command = $"DELETE FROM clients WHERE id={id}";
-            DBase.DB.Update(command, true);
-            resetClient();
+            DialogResult dialogResult = MessageBox.Show("Действительно удалить?", "Удаление", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                try
+                {
+                    int rowIndex = dgvClients.CurrentCell.RowIndex;
+                    int id = int.Parse(dgvClients[0, rowIndex].Value.ToString());
+                    string command = $"DELETE FROM clients WHERE id={id}";
+                    DBase.DB.Update(command, true);
+                    resetClient();
+                }
+                catch (Exception ex) { MessageBox.Show("Ошибка удаления"); }
+            }
+           
         }
         //оформить клиента
         private void button8_Click(object sender, EventArgs e)
