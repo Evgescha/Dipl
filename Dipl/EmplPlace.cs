@@ -131,9 +131,9 @@ namespace Dipl
             string command = "SELECT id as [ИД], brand as [Марка],model as [Модель],years as [Выпуск],transmission as [Коробка],color as [Цвет],horsepower as [ЛС],engine_size as [Двигатель], alls as [Всего], free as [Свободных],id_price as [Цена]  FROM cars WHERE id>0 ";
 
             string temp = "";
-            if (textBox4.Text.Length < 1) temp += $" AND brand LIKE(\"%{textBox1.Text}%\") ";
-            if (textBox5.Text.Length < 1) temp += $" AND model LIKE(\"%{textBox2.Text}%\") ";
-            if (textBox6.Text.Length < 1) temp += $" AND years LIKE(\"%{textBox3.Text}%\") ";
+            if (textBox4.Text.Length > 0) temp += $" AND brand LIKE(\"%{textBox1.Text}%\") ";
+            if (textBox5.Text.Length > 0) temp += $" AND model LIKE(\"%{textBox2.Text}%\") ";
+            if (textBox6.Text.Length > 0) temp += $" AND years LIKE(\"%{textBox3.Text}%\") ";
             if (listBox1.SelectedItem.ToString() != "Любая") temp += $" AND transmission LIKE(\"%{listBox1.SelectedItem.ToString()}%\") ";
             Console.WriteLine(command + temp+str);
             DBase.DB.selectToGrid(command + temp+str, dgvAutos);

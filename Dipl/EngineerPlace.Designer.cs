@@ -63,8 +63,9 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 18;
             this.listBox1.Items.AddRange(new object[] {
-            "Ручная",
-            "Автомат"});
+            "Любая",
+            "Автомат",
+            "Ручная"});
             this.listBox1.Location = new System.Drawing.Point(398, 41);
             this.listBox1.Margin = new System.Windows.Forms.Padding(2);
             this.listBox1.Name = "listBox1";
@@ -81,6 +82,7 @@
             this.button1.TabIndex = 25;
             this.button1.Text = "Найти";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label4
             // 
@@ -224,6 +226,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EngineerPlace";
             this.Text = "Рабочее место инженера";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EngineerPlace_FormClosed);
             this.Load += new System.EventHandler(this.EngineerPlace_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAutos)).EndInit();
             this.ResumeLayout(false);
