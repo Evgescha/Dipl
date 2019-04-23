@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
@@ -122,6 +123,37 @@ namespace Dipl
                
                 connection.Close();
                 return massageString;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("FAIL" + ex);
+                connection.Close();
+                return null;
+            }
+        }
+
+        //get
+        public ArrayList getColumnAllRows(string command, string[] column)
+        {
+            try
+            {
+                connection.Open();
+
+                OleDbCommand mes = new OleDbCommand();
+                mes.Connection = connection;
+                mes.CommandText = command;
+                OleDbDataReader reader = mes.ExecuteReader();
+                ArrayList array = new ArrayList();
+                while (reader.Read()) {
+                    for (int i = 0; i < column.Length; i++)
+                    {
+                        array.Add(reader[column[i]].ToString());
+                    }
+                }
+
+              
+                connection.Close();
+                return array;
             }
             catch (Exception ex)
             {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,6 +27,9 @@ namespace Dipl
 
         private void Cars_Load(object sender, EventArgs e)
         {
+            ArrayList brands = DBase.DB.getColumnAllRows("SELECT brand FROM brands", new string[] { "brand" });
+            for (int i = 0; i < brands.Count; i++) { 
+            comboBox1.Items.Add(brands[i]); }
             if (idAut != -1) loadInfo();
         }
         private void loadInfo() {
@@ -53,6 +57,10 @@ namespace Dipl
         {
             if (!validate()) { MessageBox.Show("Не все поля заполнены");return; }
             if (idAut == -1) addNew(); else saveCurr();
+            if (!comboBox1.Items.Contains(comboBox1.Text)) {
+                command = $"INSERT INTO brands(brand) VALUES(\"{comboBox1.Text}\")";
+                DBase.DB.Update(command, true);
+            }
         }
         private void addNew() {
             command = $"INSERT INTO prices(one_two_day,three_five_days, six_twenty_nine_days, more_thirty) VALUES({textBox8.Text},{textBox9.Text},{textBox10.Text},{textBox11.Text})";
