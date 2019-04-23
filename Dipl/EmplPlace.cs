@@ -55,10 +55,10 @@ namespace Dipl
             textBox3.Text = "";
             listBox1.SetSelected(0, true);
             radioButton1.Checked = true;
-            string command = "SELECT id as [ИД], brand as [Марка],model as [Модель],years as [Выпуск],transmission as [Коробка],color as [Цвет],horsepower as [ЛС],engine_size as [Двигатель],rental as [Арендован], id_price as [Цена] FROM cars";
+            string command = "SELECT id as [ИД], brand as [Марка],model as [Модель],years as [Выпуск],transmission as [Коробка],color as [Цвет],horsepower as [ЛС],engine_size as [Двигатель], alls as [Всего], free as [Свободных], id_price as [Цена] FROM cars";
             DBase.DB.selectToGrid(command, dgvAutos);
             dgvAutos.Columns[0].Visible = false;
-            dgvAutos.Columns[9].Visible = false;
+            dgvAutos.Columns[10].Visible = false;
         }
         private void reset() {
             resetAuto();
@@ -67,15 +67,8 @@ namespace Dipl
         //кнопка найти у клиента
         private void button4_Click(object sender, EventArgs e)
         {
-            
-            string command = "SELECT id, surname as [Фамилия], firstname as [Имя], lastname as [Отчество], passport as [Пасспорт], phone as [Телефон] FROM clients WHERE id>0 ";
-            string temp = "";
-            if (textBox4.Text !="") temp += $" AND passport LIKE(\"%{textBox4.Text}%\") ";
-            if (textBox5.Text != "") temp += $" AND phone LIKE(\"%{textBox5.Text}%\") ";
-            if (textBox6.Text != "") temp += $" AND surname LIKE(\"%{textBox6.Text}%\") ";
-           Console.WriteLine(command + temp);
-            DBase.DB.selectToGrid(command+temp, dgvClients);
-            dgvClients.Columns[0].Visible = false;
+
+            findClient();
         }
         // добавить клиента
         private void button5_Click(object sender, EventArgs e)
@@ -133,13 +126,9 @@ namespace Dipl
         {
             findAuto("");
         }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
+        
         private void findAuto(string str) {
-            string command = "SELECT id as [ИД], brand as [Марка],model as [Модель],years as [Выпуск],transmission as [Коробка],color as [Цвет],horsepower as [ЛС],engine_size as [Двигатель],rental as [Арендован], id_price as [Цена] FROM cars WHERE id>0 ";
+            string command = "SELECT id as [ИД], brand as [Марка],model as [Модель],years as [Выпуск],transmission as [Коробка],color as [Цвет],horsepower as [ЛС],engine_size as [Двигатель], alls as [Всего], free as [Свободных],id_price as [Цена]  FROM cars WHERE id>0 ";
 
             string temp = "";
             if (textBox4.Text.Length < 1) temp += $" AND brand LIKE(\"%{textBox1.Text}%\") ";
@@ -149,20 +138,51 @@ namespace Dipl
             Console.WriteLine(command + temp+str);
             DBase.DB.selectToGrid(command + temp+str, dgvAutos);
             dgvAutos.Columns[0].Visible = false;
-            dgvAutos.Columns[9].Visible = false;
+            dgvAutos.Columns[10].Visible = false;
         }
 
         private void radioButton1_Click(object sender, EventArgs e)
         {
             string temp = "";
-            if (radioButton2.Checked) temp = "AND rental=true ";
-            if (radioButton3.Checked) temp = "AND rental=false ";
+            if (radioButton3.Checked) temp = "AND free>0 ";
+            if (radioButton2.Checked) temp = "AND alls-free>0 ";
             findAuto(temp);
+        }
+        private void radioButton2_Click(object sender, EventArgs e)
+        {
+            findClient();
+
+        }
+        private void findClient() {
+            string command = "SELECT DISTINCT id, surname as [Фамилия], firstname as [Имя], lastname as [Отчество], passport as [Пасспорт], phone as [Телефон] FROM clients WHERE id>0 ";
+            string temp = "";
+            if (textBox4.Text != "") temp += $" AND passport LIKE(\"%{textBox4.Text}%\") ";
+            if (textBox5.Text != "") temp += $" AND phone LIKE(\"%{textBox5.Text}%\") ";
+            if (textBox6.Text != "") temp += $" AND surname LIKE(\"%{textBox6.Text}%\") ";
+            if (radioButton5.Checked) temp = "AND id IN (SELECT Client_id from contracts where paid<All_price) ";
+            if (radioButton6.Checked) temp = "AND id NOT  IN (SELECT Client_id from contracts where paid<All_price) ";
+            Console.WriteLine(command + temp);
+            DBase.DB.selectToGrid(command + temp, dgvClients);
+            dgvClients.Columns[0].Visible = false;
         }
 
         private void EmplPlace_Load(object sender, EventArgs e)
         {
             reset();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            int rowIndexAu = dgvAutos.CurrentCell.RowIndex;
+            int idAu = int.Parse(dgvAutos[0, rowIndexAu].Value.ToString());
+            
+            string[] price =DBase.DB.SelectOne("prices", idAu + "");
+            string msg = "Цены на данное авто:"   + "\n" +
+                        "1-2 дня   - " + price[1] + "\n"+
+                        "3-5 дней  - " + price[2] + "\n" +
+                        "6-29 дней - " + price[3] + "\n" +
+                        "30 и выше - " + price[4] + "\n" ;
+            MessageBox.Show(msg);
         }
     }
 }

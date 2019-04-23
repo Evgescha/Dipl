@@ -30,5 +30,20 @@ namespace Dipl
         {
 
         }
+        //add
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+        //update
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+        //delete
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

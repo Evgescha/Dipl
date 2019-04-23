@@ -137,6 +137,7 @@
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "Показать все";
             this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.Click += new System.EventHandler(this.radioButton2_Click);
             // 
             // radioButton5
             // 
@@ -149,6 +150,7 @@
             this.radioButton5.TabIndex = 15;
             this.radioButton5.Text = "Показать арендующих";
             this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.Click += new System.EventHandler(this.radioButton2_Click);
             // 
             // radioButton6
             // 
@@ -161,6 +163,7 @@
             this.radioButton6.TabIndex = 16;
             this.radioButton6.Text = "Показать свободных";
             this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButton6.Click += new System.EventHandler(this.radioButton2_Click);
             // 
             // button9
             // 
@@ -353,6 +356,7 @@
             this.button10.TabIndex = 16;
             this.button10.Text = "Цены";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // groupBox1
             // 
@@ -380,7 +384,6 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Показать все";
             this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             this.radioButton1.Click += new System.EventHandler(this.radioButton1_Click);
             // 
             // radioButton2
