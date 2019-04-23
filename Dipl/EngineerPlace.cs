@@ -25,5 +25,10 @@ namespace Dipl
             textBox3.Text = "";
             listBox1.SetSelected(0, true);
         }
+
+        private void EngineerPlace_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

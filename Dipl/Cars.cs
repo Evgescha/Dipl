@@ -36,5 +36,10 @@ namespace Dipl
         {
 
         }
+
+        private void Cars_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

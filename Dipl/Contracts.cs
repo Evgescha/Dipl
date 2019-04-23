@@ -141,9 +141,16 @@ namespace Dipl
                 return;
             }
 
-            command = $"INSERT INTO contracts(Employees_id,Client_id, Car_id,days, All_price, advanse, paid) VALUES({idEmpl},{idCl},{idAut},\"{textBox7.Text}\", {all}, {avans}, {curr})";
+            command = $"INSERT INTO contracts(Employees_id,Client_id, Car_id,days, All_price, advanse, paid, dateAdd) VALUES({idEmpl},{idCl},{idAut},\"{textBox7.Text}\", {all}, {avans}, {curr}, Date())";
             //MessageBox.Show(command);
-            if (DBase.DB.Update(command, true)) { ContractsClients.CC.resenInAnotherForm(); Close(); }
+            if (DBase.DB.Update(command, true)) {
+                string lastId = DBase.DB.getColumn("SELECT Max(id) AS idd FROM cars", new string[] { "idd" })[0];
+                command = $"INSERT INTO datePaid(idContract, idEmpl, paid, datePaid) VALUES({lastId},{idEmpl}, {curr}, Date())";
+                DBase.DB.Update(command, false);
+                command = $"UPDATE cars SET rental=true WHERE id={idAut}";
+                DBase.DB.Update(command, false);
+
+                ContractsClients.CC.resenInAnotherForm(); Close(); }
 
         }
         private void oldContract()
@@ -153,10 +160,16 @@ namespace Dipl
                 MessageBox.Show("Слишком большая сумма. Максимальная для контракта - "+(all-have));
                 return;
             }
-
-            command = $"UPDATE contracts SET paid=paid+{curr}";
+            if ((curr + have) == all) {
+                command = $"UPDATE cars SET rental=false WHERE id={idAut}";
+                DBase.DB.Update(command, false);
+            }
+            command = $"UPDATE contracts SET paid=paid+{curr} WHERE id={idContr}";
             // MessageBox.Show(command);
-            if (DBase.DB.Update(command, true)) { ContractsClients.CC.resenInAnotherForm(); Close(); }
+            if (DBase.DB.Update(command, true)) {
+                command = $"INSERT INTO datePaid(idContract, idEmpl, paid, datePaid) VALUES({idContr},{idEmpl}, {curr}, Date())";
+                DBase.DB.Update(command, false);
+                ContractsClients.CC.resenInAnotherForm(); Close(); }
 
         }
         private bool validate() {

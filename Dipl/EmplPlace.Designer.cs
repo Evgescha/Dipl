@@ -380,6 +380,8 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Показать все";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.radioButton1.Click += new System.EventHandler(this.radioButton1_Click);
             // 
             // radioButton2
             // 
@@ -392,6 +394,7 @@
             this.radioButton2.TabIndex = 12;
             this.radioButton2.Text = "Показать занятые";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.Click += new System.EventHandler(this.radioButton1_Click);
             // 
             // radioButton3
             // 
@@ -404,6 +407,7 @@
             this.radioButton3.TabIndex = 13;
             this.radioButton3.Text = "Показать свободные";
             this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.Click += new System.EventHandler(this.radioButton1_Click);
             // 
             // button2
             // 
@@ -538,6 +542,7 @@
             this.Name = "EmplPlace";
             this.Text = "Рабочее место сотрудника";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EmplPlace_FormClosed);
+            this.Load += new System.EventHandler(this.EmplPlace_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
