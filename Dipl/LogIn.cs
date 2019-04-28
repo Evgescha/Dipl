@@ -8,6 +8,7 @@ namespace Dipl
         public string[] FIO = new string[4];
         EmplPlace emplPlace;
         EngineerPlace engineerPlace;
+        Admin admin;
         public static LogIn logIn;
 
         public LogIn()
@@ -39,6 +40,8 @@ namespace Dipl
                             engineerPlace.Show();
                             break;
                         case "Admin":
+                            admin = new Admin();
+                            admin.Show();
                             break;
                     }
                     this.Hide();

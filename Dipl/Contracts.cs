@@ -63,7 +63,7 @@ namespace Dipl
             string[] arrAut = DBase.DB.SelectOne("cars", idAut + "");
             textBox2.Text = arrAut[1] + ": " + arrAut[2];
             textBox4.Text = arrAut[3];
-            loadPriceInfo(arrAut[9]);
+            loadPriceInfo(arrAut[10]);
         }
         private void loadPriceInfo(string id)
         {

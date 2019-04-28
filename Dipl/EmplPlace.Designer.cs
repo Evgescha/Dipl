@@ -204,10 +204,10 @@
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("Monotype Corsiva", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(133, 54);
+            this.button6.Location = new System.Drawing.Point(130, 54);
             this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 24);
+            this.button6.Size = new System.Drawing.Size(103, 24);
             this.button6.TabIndex = 26;
             this.button6.Text = "Изменить";
             this.button6.UseVisualStyleBackColor = true;

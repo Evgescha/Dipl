@@ -55,9 +55,10 @@ namespace Dipl
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (!validate()) { MessageBox.Show("Не все поля заполнены");return; }
+            if (!validate()) { MessageBox.Show("Не все поля заполнены"); return; }
             if (idAut == -1) addNew(); else saveCurr();
-            if (!comboBox1.Items.Contains(comboBox1.Text)) {
+            if (!comboBox1.Items.Contains(comboBox1.Text))
+            {
                 command = $"INSERT INTO brands(brand) VALUES(\"{comboBox1.Text}\")";
                 DBase.DB.Update(command, true);
             }
@@ -69,12 +70,18 @@ namespace Dipl
             command = $"INSERT INTO cars(brand,model, years, transmission, color, horsepower, engine_size, alls,free, id_price) " +
                 $"VALUES(\"{comboBox1.Text}\", \"{textBox2.Text}\", {textBox3.Text}, \"{listBox1.Text}\",\"{textBox4.Text}\", {textBox5.Text}, {textBox6.Text}, {textBox7.Text}, {textBox7.Text},{lastId} )";
             DBase.DB.Update(command, true);
+            lastId = DBase.DB.getColumn("SELECT Max(id) AS idd FROM cars", new string[] { "idd" })[0];
+            command = "INSERT INTO post ( idEng, idCar, [count], dates ) VALUES(" + LogIn.logIn.FIO[0]+", "+lastId+", "+textBox7.Text+", Date())";
+            MessageBox.Show(command);
+            DBase.DB.Update(command, true);
         }
         private void saveCurr() {
             command = $"UPDATE prices SET one_two_day={textBox8.Text},three_five_days={textBox9.Text}, six_twenty_nine_days={textBox10.Text}, more_thirty={textBox11.Text} WHERE id ={idAut}";
             DBase.DB.Update(command, true);
             command = $"UPDATE cars SET brand=\"{comboBox1.Text}\", model=\"{textBox2.Text}\",  years={textBox3.Text},  transmission=\"{listBox1.Text}\",  " +
                 $"color=\"{textBox4.Text}\",  horsepower={textBox5.Text},  engine_size={textBox6.Text},  alls={textBox7.Text}, free={textBox7.Text} WHERE id={idAut}";
+            DBase.DB.Update(command, true);
+            command = $"UPDATE post SET [count]={textBox7.Text} WHERE idEng={LogIn.logIn.FIO[0]} AND idCar={idAut}";
             DBase.DB.Update(command, true);
         }
 

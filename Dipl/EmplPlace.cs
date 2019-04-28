@@ -115,7 +115,7 @@ namespace Dipl
                 int idAu = int.Parse(dgvAutos[0, rowIndexAu].Value.ToString());
 
 
-                if (bool.Parse(dgvAutos[8, rowIndexAu].Value.ToString())) { MessageBox.Show("Данная машина занята, выберите другую"); return; }
+                if (int.Parse(dgvAutos[9, rowIndexAu].Value.ToString())<1) { MessageBox.Show("Данная машина занята, выберите другую"); return; }
                 contracts = new Contracts(idCl, idAu);
                 contracts.Show();
             } catch (Exception ex) { MessageBox.Show("Не выбран пользователь или авто.");
