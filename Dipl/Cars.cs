@@ -24,7 +24,26 @@ namespace Dipl
             this.idAut = idAut;
             InitializeComponent();
         }
+        public Cars(int idAut, string str)
+        {
+            this.idAut = idAut;
+            InitializeComponent();
+            comboBox1.Enabled = false;
+            textBox2.Enabled = false;
+            textBox3.Enabled = false;
+            listBox1.Enabled = false;
+            textBox4.Enabled = false;
+            textBox5.Enabled = false;
+            textBox6.Enabled = false;
+            textBox7.Enabled = false;
 
+
+            textBox8.Enabled = false;
+            textBox9.Enabled = false;
+            textBox10.Enabled = false;
+            textBox11.Enabled = false;
+            button2.Visible = false;
+        }
         private void Cars_Load(object sender, EventArgs e)
         {
             ArrayList brands = DBase.DB.getColumnAllRows("SELECT brand FROM brands", new string[] { "brand" });

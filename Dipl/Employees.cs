@@ -20,9 +20,22 @@ namespace Dipl
         }
         public Employees(int idEmpl)
         {
-            this.idEmpl = idEmpl;            
+            this.idEmpl = idEmpl;
             InitializeComponent();
             loadData();
+        }
+        public Employees(int idEmpl, string str)
+        {
+            this.idEmpl = idEmpl;
+            InitializeComponent();
+            loadData();
+            textBox1.Enabled = false;
+            textBox2.Enabled = false;
+            textBox3.Enabled = false;
+            textBox5.Enabled = false;
+            textBox6.Enabled = false;
+            listBox1.Enabled = false;
+            button2.Visible = false;
         }
         private void loadData() {
             string[] info = DBase.DB.SelectOne("employees", idEmpl + "");

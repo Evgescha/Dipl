@@ -13,10 +13,11 @@ namespace Dipl
     public partial class Admin : Form
     {
         Employees employees;
+        Cars cars;
         string command = "",
             commandEmpl = "SELECT id as[ИД], surname as [Фамилия], firstname as [Имя], lastname as [Отчество], role as [Должность], login as [Логин], password as [Пароль] FROM employees ",
             commandPost = "SELECT distinct p.id as [ИД], idEng as [ИД Сотрудника],surname as [Фамилия], firstname as[Имя], idCar as [ИД Авто],model as[Модель авто], count as [Поставлено], dates as [Дата] FROM post p, employees e, cars c WHERE (p.idEng=e.id AND p.idCar=c.id)  ",
-            commandMoney = "SELECT d.id as [ИД], idContract as [ИД Контракта], idEmpl as [ИД Сотрудника],surname as [Фамилия], firstname as[Имя],  paid as [Получено], datePaid as [Дата]  FROM datePaid d, employees e WHERE e.id = d.idEmpl ";
+            commandMoney = "SELECT d.id as [ИД], d.idContract as [ИД Контракта], d.idEmpl as [ИД Сотрудника],e.surname as [Фамилия Сотр], e.firstname as[Имя Сотр],  d.paid as [Получено],c.firstname as [Имя клиента],c.lastname as[Отчество клиента],passport as[Пасспорт клиента], datePaid as [Дата]  FROM datePaid d, employees e,clients c, contracts cont WHERE (e.id = d.idEmpl AND d.idContract=cont.id AND cont.Client_id=c.id)  ";
         public Admin()
         {
             InitializeComponent();
@@ -28,6 +29,8 @@ namespace Dipl
         }
         private void loadData()
         {
+            dateTimePicker1.CustomFormat = "dd-MM-yyyy";
+            dateTimePicker2.CustomFormat = "dd-MM-yyyy";
             loadEmplData();
             loadPostData();
             loadMoneyData();
@@ -93,22 +96,80 @@ namespace Dipl
             findPost();
         }
         void findPost() {
-            command = $" AND (surname LIKE ('%{textBox2.Text}%') OR firstname LIKE ('%{textBox2.Text}%') OR model LIKE ('%{textBox2.Text}%')) ";
-            DBase.DB.selectToGrid(commandPost + command, dgvPost);
+            command = commandPost +$" AND (surname LIKE ('%{textBox1.Text}%') OR firstname LIKE ('%{textBox1.Text}%') OR model LIKE ('%{textBox1.Text}%')) ";
+            if (checkBox1.Checked) command += $" AND dates>#{dateTimePicker1.Text.Replace(".","-")}#";
+            DBase.DB.selectToGrid(command, dgvPost);
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
-           
+            contrSotr();
+        }
+        void contrSotr() {
+            command = commandMoney+ $" AND d.idEmpl = {dgvMoney[2, dgvMoney.CurrentCell.RowIndex].Value.ToString()}";
+            DBase.DB.selectToGrid(command, dgvMoney);
+            dgvMoney.Columns[0].Visible = false;
+            dgvMoney.Columns[1].Visible = false;
+            dgvMoney.Columns[2].Visible = false;
+        }
+        void openEmployees()
+        {
+            int id = int.Parse(dgvPost[1, dgvPost.CurrentCell.RowIndex].Value.ToString());
+            employees = new Employees(id, "");
+            employees.Show();
+        }
+        void openAuto()
+        {
+            int id = int.Parse(dgvPost[4, dgvPost.CurrentCell.RowIndex].Value.ToString());
+            cars = new Cars(id, "");
+            cars.Show();
         }
         void findMoney() {
-            
-            DBase.DB.selectToGrid(commandPost + command, dgvPost);
+            command = commandMoney + $" AND (e.surname LIKE ('%{textBox2.Text}%') OR e.firstname LIKE ('%{textBox2.Text}%') OR c.firstname LIKE ('%{textBox2.Text}%') OR c.lastname LIKE ('%{textBox2.Text}%') OR passport LIKE ('%{textBox2.Text}%')) ";
+            if (checkBox2.Checked) command += $" AND datePaid>#{dateTimePicker2.Text.Replace(".", "-")}#";
+            DBase.DB.selectToGrid(command, dgvMoney);
+            dgvMoney.Columns[0].Visible = false;
+            dgvMoney.Columns[1].Visible = false;
+            dgvMoney.Columns[2].Visible = false;
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
             findMoney();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            openEmployees();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            openAuto();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            loadPostData();
+            textBox1.Text = "";
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            textBox2.Text = "";
+            findMoney();
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            openAllContrClient();
+        }
+        void openAllContrClient() {
+            command = commandMoney + $" AND cont.Client_id = (SELECT Client_id FROM contracts WHERE id={dgvMoney[1, dgvMoney.CurrentCell.RowIndex].Value.ToString()})";
+            DBase.DB.selectToGrid(command, dgvMoney);
+            dgvMoney.Columns[0].Visible = false;
+            dgvMoney.Columns[1].Visible = false;
+            dgvMoney.Columns[2].Visible = false;
         }
 
         private void loadPostData()
@@ -118,6 +179,9 @@ namespace Dipl
         private void loadMoneyData()
         {
             DBase.DB.selectToGrid(commandMoney, dgvMoney);
+            dgvMoney.Columns[0].Visible = false;
+            dgvMoney.Columns[1].Visible = false;
+            dgvMoney.Columns[2].Visible = false;
         }
 
         private void Admin_FormClosed(object sender, FormClosedEventArgs e)
