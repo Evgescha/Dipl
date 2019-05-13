@@ -22,7 +22,23 @@ namespace Dipl
             //reset();
         }
 
-      
+        public Contracts Contracts
+        {
+            get => default(Contracts);
+            set
+            {
+            }
+        }
+
+        public Clients Clients
+        {
+            get => default(Clients);
+            set
+            {
+            }
+        }
+
+
         // кнопка сброс авто
         private void button2_Click(object sender, EventArgs e)
         {

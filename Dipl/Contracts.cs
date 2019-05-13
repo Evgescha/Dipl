@@ -43,6 +43,14 @@ namespace Dipl
             textBox11.Text = contracts[7];
         }
 
+        public ContractsClients ContractsClients
+        {
+            get => default(ContractsClients);
+            set
+            {
+            }
+        }
+
         private void Contracts_Load(object sender, EventArgs e)
         {
             loadClientInfo();

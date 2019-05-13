@@ -23,6 +23,14 @@ namespace Dipl
             InitializeComponent();
         }
 
+        public Employees Employees
+        {
+            get => default(Employees);
+            set
+            {
+            }
+        }
+
         private void Admin_Load(object sender, EventArgs e)
         {
             loadData();

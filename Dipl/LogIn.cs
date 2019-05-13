@@ -17,6 +17,30 @@ namespace Dipl
             logIn = this;
         }
 
+        public EmplPlace EmplPlace
+        {
+            get => default(EmplPlace);
+            set
+            {
+            }
+        }
+
+        public Admin Admin
+        {
+            get => default(Admin);
+            set
+            {
+            }
+        }
+
+        public EngineerPlace EngineerPlace
+        {
+            get => default(EngineerPlace);
+            set
+            {
+            }
+        }
+
         private void LogIn_Load(object sender, EventArgs e)
         {
 

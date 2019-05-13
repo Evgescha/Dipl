@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Dipl.Admin" Collapsed="true">
+    <Position X="2.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACKIKBgEISAAQgiDIICJiAACCMx7AAAg0HAfQIEDTAA=</HashCode>
+      <FileName>Admin.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Employees" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Dipl.Cars" Collapsed="true">
+    <Position X="9.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>9CAAQIEAASAAABCQEACAAABCIAQQAAAAkCAAAAAEAKA=</HashCode>
+      <FileName>Cars.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dipl.Clients" Collapsed="true">
+    <Position X="7" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCAAAIAAAaAAABCQAACAAABCIIAIAAAAEEAEBAAAAgA=</HashCode>
+      <FileName>Clients.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dipl.Contracts" Collapsed="true">
+    <Position X="5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>dCABAIAAASCgAFCwFACAoABCYIQIAAAAEAlEAACQCLA=</HashCode>
+      <FileName>Contracts.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ContractsClients" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Dipl.ContractsClients" Collapsed="true">
+    <Position X="5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gSACAAAAACAgABAYAACAAAACAIwIAAAAEGAEAAAACAI=</HashCode>
+      <FileName>ContractsClients.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dipl.DBase" Collapsed="true">
+    <Position X="3.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAEAAAAAAAAABIAAAAAAAABACAAAAAAAABBA=</HashCode>
+      <FileName>DBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dipl.Employees" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACIAABEAASAAAFCAAACAAABSAAQQAAAAECAAAIAAAAA=</HashCode>
+      <FileName>Employees.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dipl.EmplPlace" Collapsed="true">
+    <Position X="6" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iGCAAAEEASAAABCiACCAAABmIcw7AAAA0HAPIAARTAI=</HashCode>
+      <FileName>EmplPlace.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Contracts" />
+      <Property Name="Clients" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Dipl.EngineerPlace" Collapsed="true">
+    <Position X="9.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CCAABAEEECAAABAAAACAAQBCAMQ4AAAAGHAMAAAGCAA=</HashCode>
+      <FileName>EngineerPlace.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dipl.LogIn" Collapsed="true">
+    <Position X="6" Y="0.75" Width="1.5" />
+    <AssociationLine Name="EngineerPlace" Type="Dipl.EngineerPlace" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.5" Y="1.375" />
+        <Point X="10" Y="1.375" />
+        <Point X="10" Y="2" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AiAQAIAgACAAABAAAACAAQASAAEIEASAEEABAAAAACA=</HashCode>
+      <FileName>LogIn.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="EmplPlace" />
+      <Property Name="Admin" />
+      <Property Name="EngineerPlace" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
