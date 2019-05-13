@@ -152,13 +152,14 @@ namespace Dipl
             command = $"INSERT INTO contracts(Employees_id,Client_id, Car_id,days, All_price, advanse, paid, dateAdd) VALUES({idEmpl},{idCl},{idAut},\"{textBox7.Text}\", {all.ToString()}, {avans.ToString()}, {curr.ToString()}, Date())";
             //MessageBox.Show(command);
             if (DBase.DB.Update(command, true)) {
-                string lastId = DBase.DB.getColumn("SELECT Max(id) AS idd FROM cars", new string[] { "idd" })[0];
+                string lastId = DBase.DB.getColumn("SELECT Max(id) AS idd FROM contracts", new string[] { "idd" })[0];
                 command = $"INSERT INTO datePaid(idContract, idEmpl, paid, datePaid) VALUES({lastId},{idEmpl}, {curr.ToString()}, Date())";
                 DBase.DB.Update(command, false);
                 command = $"UPDATE cars SET free=free-1 WHERE id={idAut}";
                 DBase.DB.Update(command, false);
 
-                ContractsClients.CC.resenInAnotherForm(); Close(); }
+                //ContractsClients.CC.resenInAnotherForm();
+                Close(); }
 
         }
         private void oldContract()
