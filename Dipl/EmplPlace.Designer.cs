@@ -542,6 +542,8 @@
             this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximumSize = new System.Drawing.Size(616, 405);
+            this.MinimumSize = new System.Drawing.Size(616, 405);
             this.Name = "EmplPlace";
             this.Text = "Рабочее место сотрудника";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EmplPlace_FormClosed);

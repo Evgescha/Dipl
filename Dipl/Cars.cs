@@ -43,6 +43,7 @@ namespace Dipl
             textBox10.Enabled = false;
             textBox11.Enabled = false;
             button2.Visible = false;
+            button1.Visible = false;
         }
         private void Cars_Load(object sender, EventArgs e)
         {

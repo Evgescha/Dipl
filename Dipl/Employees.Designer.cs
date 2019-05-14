@@ -199,6 +199,8 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox2);
+            this.MaximumSize = new System.Drawing.Size(425, 231);
+            this.MinimumSize = new System.Drawing.Size(425, 231);
             this.Name = "Employees";
             this.Text = "Сотрудники";
             this.ResumeLayout(false);

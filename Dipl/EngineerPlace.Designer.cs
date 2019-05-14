@@ -224,6 +224,8 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dgvAutos);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximumSize = new System.Drawing.Size(616, 405);
+            this.MinimumSize = new System.Drawing.Size(616, 405);
             this.Name = "EngineerPlace";
             this.Text = "Рабочее место инженера";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EngineerPlace_FormClosed);

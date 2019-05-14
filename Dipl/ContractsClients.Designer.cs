@@ -190,6 +190,8 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBox2);
+            this.MaximumSize = new System.Drawing.Size(543, 331);
+            this.MinimumSize = new System.Drawing.Size(543, 331);
             this.Name = "ContractsClients";
             this.Text = "Контракты клиента";
             this.Load += new System.EventHandler(this.ContractsClients_Load);

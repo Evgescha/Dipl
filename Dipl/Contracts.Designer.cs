@@ -328,6 +328,8 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBox6);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximumSize = new System.Drawing.Size(616, 345);
+            this.MinimumSize = new System.Drawing.Size(616, 345);
             this.Name = "Contracts";
             this.Text = "Контракт";
             this.Load += new System.EventHandler(this.Contracts_Load);

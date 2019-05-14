@@ -379,6 +379,8 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximumSize = new System.Drawing.Size(616, 327);
+            this.MinimumSize = new System.Drawing.Size(616, 327);
             this.Name = "Cars";
             this.Text = "Авто";
             this.Load += new System.EventHandler(this.Cars_Load);
