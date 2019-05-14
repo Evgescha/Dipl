@@ -39,7 +39,7 @@ namespace Dipl
                 {
                     responce[i] = reader[i].ToString();
                 }
-                if (count == 1) { MessageBox.Show("Вход выполнен успешно"); connection.Close(); return responce; }
+                if (count == 1) { /*MessageBox.Show("Вход выполнен успешно");*/ connection.Close(); return responce; }
                 else { MessageBox.Show("Неверные данные. Повторите еще раз"); connection.Close(); return null; }
 
             }

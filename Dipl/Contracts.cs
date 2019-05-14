@@ -95,7 +95,7 @@ namespace Dipl
                 else if (days <= 5) allPrice *= price[2];
                 else if (days <= 9) allPrice *= price[3];
                 else allPrice *= price[4];
-                float avanse = allPrice / 2;
+                float avanse = (int)(allPrice / 2);
                 textBox8.Text = allPrice + "";
                 textBox9.Text = avanse + "";
             }

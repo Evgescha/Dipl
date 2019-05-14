@@ -56,7 +56,7 @@ namespace Dipl
                 command = $"UPDATE clients SET surname = \"{textBox6.Text}\", firstname = \"{textBox1.Text}\", lastname = \"{textBox2.Text}\", phone = \"{textBox3.Text}\", passport = \"{textBox5.Text}\", placeResidence = \"{textBox7.Text.Replace("\"", "'")}\", Job = \"{textBox4.Text.Replace("\"", "'")}\" WHERE id = {client[0]}";
             else
                 command = $"INSERT INTO clients(surname, firstname, lastname, phone, passport, placeResidence, Job) VALUES( \"{textBox6.Text}\",  \"{textBox1.Text}\",  \"{textBox2.Text}\",  \"{textBox3.Text}\",  \"{textBox5.Text}\", \"{textBox7.Text.Replace("\"", "'")}\", \"{textBox4.Text.Replace("\"", "'")}\")";
-            MessageBox.Show(command);
+            //MessageBox.Show(command);
             DBase.DB.Update(command,true);
         }
         private bool validate() {

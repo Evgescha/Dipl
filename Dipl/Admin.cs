@@ -114,23 +114,39 @@ namespace Dipl
             contrSotr();
         }
         void contrSotr() {
-            command = commandMoney+ $" AND d.idEmpl = {dgvMoney[2, dgvMoney.CurrentCell.RowIndex].Value.ToString()}";
+            try{ 
+            command = commandMoney + $" AND d.idEmpl = {dgvMoney[2, dgvMoney.CurrentCell.RowIndex].Value.ToString()}";
             DBase.DB.selectToGrid(command, dgvMoney);
             dgvMoney.Columns[0].Visible = false;
             dgvMoney.Columns[1].Visible = false;
             dgvMoney.Columns[2].Visible = false;
+            } catch (System.NullReferenceException ex) {
+                MessageBox.Show("Не удалось просмотреть платежи, принятые сотрудником.\nНе выбрана запись.");
+            }
         }
         void openEmployees()
         {
-            int id = int.Parse(dgvPost[1, dgvPost.CurrentCell.RowIndex].Value.ToString());
-            employees = new Employees(id, "");
-            employees.Show();
+            try
+            {
+                int id = int.Parse(dgvPost[1, dgvPost.CurrentCell.RowIndex].Value.ToString());
+                employees = new Employees(id, "");
+                employees.Show();
+            }
+            catch (NullReferenceException ex) {
+                MessageBox.Show("Не удалось просмотреть информацию о сотруднике.\nНе выбрана запись.");
+            }
         }
         void openAuto()
         {
-            int id = int.Parse(dgvPost[4, dgvPost.CurrentCell.RowIndex].Value.ToString());
-            cars = new Cars(id, "");
-            cars.Show();
+            try
+            {
+                int id = int.Parse(dgvPost[4, dgvPost.CurrentCell.RowIndex].Value.ToString());
+                cars = new Cars(id, "");
+                cars.Show();
+            }
+            catch (NullReferenceException ex) {
+                MessageBox.Show("Не удалось просмотреть подробности об авто.\nНе выбрана запись");
+            }
         }
         void findMoney() {
             command = commandMoney + $" AND (e.surname LIKE ('%{textBox2.Text}%') OR e.firstname LIKE ('%{textBox2.Text}%') OR c.firstname LIKE ('%{textBox2.Text}%') OR c.lastname LIKE ('%{textBox2.Text}%') OR passport LIKE ('%{textBox2.Text}%')) ";
@@ -173,11 +189,17 @@ namespace Dipl
             openAllContrClient();
         }
         void openAllContrClient() {
-            command = commandMoney + $" AND cont.Client_id = (SELECT Client_id FROM contracts WHERE id={dgvMoney[1, dgvMoney.CurrentCell.RowIndex].Value.ToString()})";
-            DBase.DB.selectToGrid(command, dgvMoney);
-            dgvMoney.Columns[0].Visible = false;
-            dgvMoney.Columns[1].Visible = false;
-            dgvMoney.Columns[2].Visible = false;
+            try
+            {
+                command = commandMoney + $" AND cont.Client_id = (SELECT Client_id FROM contracts WHERE id={dgvMoney[1, dgvMoney.CurrentCell.RowIndex].Value.ToString()})";
+                DBase.DB.selectToGrid(command, dgvMoney);
+                dgvMoney.Columns[0].Visible = false;
+                dgvMoney.Columns[1].Visible = false;
+                dgvMoney.Columns[2].Visible = false;
+            }
+            catch (NullReferenceException ex) {
+                MessageBox.Show("Не удалось просмотреть контракты клиента. \nНе выбрана запись");
+            }
         }
 
         private void loadPostData()
